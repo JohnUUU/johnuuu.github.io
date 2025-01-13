@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Anatomy of a Backtester | John Wu</title><link rel="stylesheet" href="/src/styles/article.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><link rel="icon" href="/icons/glider.png" type="image/x-icon"><script src="/src/scripts/carousel.ts" type="module"></script><style>[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body tabindex="0"> <header class="article-header"> <h1 class="article-title">Anatomy of a Backtester</h1> <p class="article-description">An exploration of the components and design behind QTAB&#39;s backtesting framework</p> </header> <main class="article-content"> <h2 id="introduction">Introduction</h2>
+<p>Backtesting is a super critical tool in quantitative trading. It’s how we test strategies before putting them into the real world, simulating trades on historical data to see how they perform. At QTAB (Quant Trading @ Brown), I had the opportunity to lead the development of a file-based backtester.</p>
+<p>In this article, I’ll walk you through the components of our backtester and explain how they all work together!</p>
+<h2 id="structure">Structure</h2>
+<p>Our backtester is built on a file-based architecture. This approach makes data handling transparent and debugging straightforward. Each piece of the system—data ingestion, model interaction, and portfolio management is modular, making it easy to tweak and extend as we iterate.</p>
+<h3 id="data-side">Data Side</h3>
+<p>Every good model always starts with high-quality data and data engineering, so we started with the data pipeline:</p>
+<ul>
+<li>
+<p><strong>Data Scrapers</strong><br/>
+To build effective strategies, you need access to comprehensive data. Our scrapers gather cost-effective data from online sources, ensuring we have a rich dataset covering prices, volumes, and other essential metrics.</p>
+</li>
+<li>
+<p><strong>Signals</strong><br/>
+Signals are the actionable inputs to our models. They’re derived from raw data and built to be dynamically transformed, filtered, and joined on the fly to suit specific strategies. This flexibility allows users to create unique signals tailored to their models.</p>
+</li>
+<li>
+<p><strong>Universe</strong><br/>
+The universe refers to the assets available for trading, along with their metadata (price, volume, OHLCV, etc.).</p>
+</li>
+</ul>
+<h3 id="model-side">Model Side</h3>
+<p>The model is where the magic happens. It’s what turns data into decisions. Here’s how we approached it:</p>
+<ul>
+<li><strong>Models</strong><br/>
+Models consume signals and asset information to generate trading orders dynamically. They can also contiain a logger that they can use to log anything into a file for further analysis. Right now, our models work directly with signals and the universe, but future iterations will incorporate portfolio data to enable even more sophisticated strategies.</li>
+</ul>
+<h3 id="portfolio-side">Portfolio Side</h3>
+<p>The portfolio is the heartbeat of the backtester, tracking performance and simulating trades. Here’s how we’ve set it up:</p>
+<ul>
+<li>
+<p><strong>Portfolio Tracking</strong><br/>
+We log the portfolio’s state over time, including holdings, cash, and key metrics. This creates a complete record for post-simulation analysis.</p>
+</li>
+<li>
+<p><strong>Trade Executor</strong><br/>
+Executing trades in a simulation needs to feel realistic. Our executor simulates taking orders and executing the orders to the best of our ability (given different restrictions).</p>
+</li>
+<li>
+<p><strong>Cost Model</strong><br/>
+Unfortunately trading is not free so we have to account for costs. We’ve implemented a rudimentary cost model to simulate transaction expenses, including spreads and flat fees to get a better sense of actual portfolio performance.</p>
+</li>
+</ul>
+<h3 id="the-backtester-workflow">The Backtester Workflow</h3>
+<p>Here’s how all the pieces come together to create the backtester workflow:</p>
+<ol>
+<li>
+<p><strong>Data Preparation:</strong><br/>
+Preprocess and transform raw data into signals and a tradable universe.</p>
+</li>
+<li>
+<p><strong>Order Generation:</strong><br/>
+Prompt the model to generate orders based on the current data and universe.</p>
+</li>
+<li>
+<p><strong>Scheduling:</strong><br/>
+Use a fixed scheduler to determine whether to log summary metrics, execute trades, or update the portfolio.</p>
+</li>
+<li>
+<p><strong>Simulation:</strong><br/>
+Run the backtest over a defined date range with specified conditions. Reinitialize as needed to prevent foreknowledge leakage.</p>
+</li>
+<li>
+<p><strong>Logging and Visualization:</strong><br/>
+Save all data from the model, portfolio, and metrics. Users can analyze this data with a basic visualizer we’ve built to track performance.</p>
+</li>
+</ol>
+<p>A key priority throughout all of this is preventing foreknowledge leakage, especially because of how pernicious it can be (sneaking through time-zones, suriviorship bias, etc…) but we can’t prevent everything systematically so the data transformations still need to be done responsibly, and the work still needs to be scrutinized deeply.</p>
+<h2 id="results-and-reflections">Results and Reflections</h2>
+<p>Building this backtester has been an incredible learning experience. It’s not perfect, but it’s a good starting point.</p>
+<p>That said, there’s still plenty of room to improve it further:</p>
+<ul>
+<li>
+<p><strong>Expanding Models:</strong><br/>
+Integrating portfolio data into models to enable more complex models.</p>
+</li>
+<li>
+<p><strong>Dynamic Scheduling:</strong><br/>
+Moving from fixed schedules to ones that adapt based on strategy requirements.</p>
+</li>
+<li>
+<p><strong>Better Cost Models:</strong><br/>
+Simulating more nuanced costs, including slippage and market impact.</p>
+</li>
+<li>
+<p><strong>Enhanced Visualizations:</strong><br/>
+Adding more robust tools to visualize trades, portfolio performance, and strategy metrics.</p>
+</li>
+</ul>
+<p>We’re also exploring external tools like <code>vectorbt</code> to see if they can complement or even replace parts of our workflow. The goal is to focus more on research while keeping our systems flexible and easy to adapt.</p>
+<p>Note: The code for this project is private to the club, but if you’re a potential employer or just interested to talk about it please reach out and I can go into more detail about it!</p>
+<hr/> </main> </body></html>

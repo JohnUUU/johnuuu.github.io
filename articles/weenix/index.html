@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Weenix | John Wu</title><link rel="stylesheet" href="/src/styles/article.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><link rel="icon" href="/icons/glider.png" type="image/x-icon"><script src="/src/scripts/carousel.ts" type="module"></script><style>[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body tabindex="0"> <header class="article-header"> <h1 class="article-title">Weenix</h1> <p class="article-description">A compact Unix-like operating system complete with a file system and support for system calls, developed as part of a semester-long project.</p> </header> <main class="article-content"> <h2 id="overview">Overview</h2>
+<p>In 2023, I developed <strong>Weenix</strong>, a fully functional, Unix-like operating system kernel, as part of a semester-long project for <strong>CSCI1690: Operating Systems with Lab</strong> at Brown University. This project involved designing and implementing core subsystems of an operating system, culminating in a kernel capable of managing processes, file systems, and virtual memory.</p>
+<h2 id="key-components">Key Components</h2>
+<p>Weenix was built incrementally across several major subsystems, each focusing on a critical aspect of operating systems design:</p>
+<ol>
+<li>
+<p><strong>Processes and Threads (Procs)</strong></p>
+<ul>
+<li>Implemented threading and process management, including context switching, scheduling, and synchronization primitives like mutexes.</li>
+<li>Developed the initial process lifecycle, enabling multiple processes and threads to run concurrently in kernel mode.</li>
+</ul>
+</li>
+<li>
+<p><strong>Device Drivers (Drivers)</strong></p>
+<ul>
+<li>Created device drivers for character devices (e.g., terminals) and block devices (e.g., disks).</li>
+<li>Supported memory devices like <code>/dev/null</code> and <code>/dev/zero</code> for efficient I/O operations.</li>
+</ul>
+</li>
+<li>
+<p><strong>Virtual File System (VFS)</strong></p>
+<ul>
+<li>Designed a UNIX-like file system interface to abstract file operations across different storage devices.</li>
+<li>Implemented pathname resolution and system calls for opening, reading, writing, and closing files.</li>
+</ul>
+</li>
+<li>
+<p><strong>System V File System (S5FS)</strong></p>
+<ul>
+<li>Developed an on-disk file system with support for inodes, directories, and data blocks.</li>
+<li>Implemented mechanisms for block allocation, directory traversal, and managing free lists.</li>
+</ul>
+</li>
+<li>
+<p><strong>Virtual Memory (VM)</strong></p>
+<ul>
+<li>Built a virtual memory manager to support user-space processes.</li>
+<li>Handled page faults, demand paging, and memory-mapped files (e.g., <code>mmap</code> and <code>munmap</code>).</li>
+<li>Implemented fork semantics with copy-on-write optimizations for efficient process duplication.</li>
+</ul>
+</li>
+</ol>
+<p>Although I cannot share the code publicly, I am happy to discuss this project in detail with potential employers. Feel free to reach out if you are interested in seeing my implementation or hearing more about my approach.
+For a detailed breakdown of each subsystem, refer to the <a href="https://github.com/brown-cs1690/handout/wiki">Weenix Documentation</a>.</p> </main> </body></html>
