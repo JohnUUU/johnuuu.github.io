@@ -1,7 +1,7 @@
 # 🌟 Hello, I'm John
 
 Welcome to the repository for my portfolio website built with [astro](https://astro.build/) 🚀! This site highlights my projects, experience, and interests. You can check it out live at:  
-**[https://johnuuu.github.io/johnHome/](https://johnuuu.github.io/johnHome/)**  
+**[https://johnuuu.github.io](https://johnuuu.github.io)**  
 
 ---
 
