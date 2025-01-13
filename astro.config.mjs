@@ -5,7 +5,6 @@ import rehypeKatex from 'rehype-katex';
 
 export default defineConfig({
     site: 'https://johnUUU.github.io',
-    base: '/johnHome/',
     integrations: [mdx()],
     markdown: {
         remarkPlugins: [remarkMath],

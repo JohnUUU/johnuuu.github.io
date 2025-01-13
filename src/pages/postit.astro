@@ -1,11 +1,15 @@
+---
+import "../styles/postit.css";
+---
+
 <!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/icons/glider.png?v=1" type="image/x-icon" />
+        <base href={import.meta.env.BASE_URL}>
         <title>Sticky Note</title>
-        <link rel="icon" href="/icons/glider.png" type="image/x-icon" />
-        <link rel="stylesheet" href="/src/styles/postit.css" />
     </head>
     <body id="postit-body">
         <header id="postit-header" contenteditable="true"></header>
