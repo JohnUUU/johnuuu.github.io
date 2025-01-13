@@ -1,0 +1,88 @@
+---
+import ProjectLayout from "../layouts/ProjectLayout.astro";
+
+const projects = [
+    {
+        thumbnail: "/icons/wikipedia.png",
+        title: "Wikipedia",
+        link: "https://www.wikipedia.org",
+        description: "The free internet repository of all knowledge",
+    },
+    {
+        thumbnail: "/icons/xkcd.svg",
+        title: "XKCD",
+        link: "https://xkcd.com/1975/",
+        description:
+            "The free internet repository of all knowledge (but funnier).",
+    },
+    {
+        thumbnail: "/icons/desmos.png",
+        title: "Desmos",
+        link: "https://www.desmos.com/calculator",
+        description: "Interactive turing complete graphing calculator",
+    },
+    {
+        thumbnail: "/icons/3b1b.png",
+        title: "Learn Something New (Random)",
+        link: "/redirects/explainers",
+        description:
+            "Some of my favorite non-video explainers on the internet (Collected from 3b1b SOME)",
+    },
+    {
+        thumbnail: "/icons/windows93.png",
+        title: "Windows 93",
+        link: "https://www.windows93.net/",
+        description:
+            "The original inspiration for this site (unfortunately you can only boot in v1 mode)",
+    },
+    {
+        thumbnail: "/icons/gt.png",
+        title: "The evolution of trust",
+        link: "https://ncase.me/trust/",
+        description:
+            "Probably my favorite interactive game about game theory on the internet",
+    },
+    {
+        thumbnail: "/icons/sandbox.png",
+        title: "Interactive Sandbox",
+        link: "https://sandspiel.club/",
+        description: "Play god in a particle physics simulator",
+    },
+    {
+        thumbnail: "/icons/avg.png",
+        title: "Than Average",
+        link: "https://thanaverage.xyz/",
+        description: "How do you compare to the average person?",
+    },
+    {
+        thumbnail: "/icons/rtchess.png",
+        title: "Kung Fu Chess",
+        link: "https://www.kfchess.com",
+        description: "Play a Real-time chess game",
+    },
+    {
+        thumbnail: "/icons/pointer.png",
+        title: "Pointer Pointer",
+        link: "https://pointerpointer.com",
+        description: "Every just wanted to get pointed at?",
+    },
+    {
+        thumbnail: "/icons/horse.png",
+        title: "A Very Long Horse",
+        link: "http://endless.horse/",
+        description: "HOOOOOOOORSE",
+    },
+    {
+        thumbnail: "/icons/bored.png",
+        title: "Random Website",
+        link: "https://www.boredbutton.com/",
+        description: "Bored Already? Visit a random quirky website",
+    },
+];
+
+const title = "Welcome to the Internet";
+const intro =
+    "*Turns out, websites don't appreciate being shoved into frames because of security reasons (looking at you Clickjacking). Fortunately, there are still a few gems that we can explore!";
+---
+
+<ProjectLayout projects={projects} title={title} intro={intro} />

@@ -1,0 +1,28 @@
+---
+const { frontmatter } = Astro.props;
+const { title, description } = frontmatter;
+---
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{title} | John Wu</title>
+        <link rel="stylesheet" href="/src/styles/article.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"
+        />
+        <link rel="icon" href="/icons/glider.png" type="image/x-icon" />
+        <script src="/src/scripts/carousel.ts" type="module"></script>
+    </head>
+    <body tabindex="0">
+        <header class="article-header">
+            <h1 class="article-title">{title}</h1>
+            <p class="article-description">{description}</p>
+        </header>
+        <main class="article-content">
+            <slot />
+        </main>
+    </body>
+</html>

@@ -1,0 +1,215 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/src/styles/global.css" />
+        <link rel="stylesheet" href="/src/styles/createIcon.css" />
+        <script src="/src/scripts/createIcon.ts" type="module"></script>
+        <link rel="icon" href="/icons/glider.png" type="image/x-icon" />
+        <title>Design Your Own Icon</title>
+    </head>
+    <body>
+        <header class="header">
+            <h1 class="page-title">Design Your Own Icon</h1>
+        </header>
+        <main class="icon-main">
+            <div class="icon-designer">
+                <div class="mode-toggle">
+                    <label>
+                        <input
+                            type="radio"
+                            name="icon-mode"
+                            value="upload"
+                            checked
+                        />
+                        Upload Image
+                    </label>
+                    <label>
+                        <input type="radio" name="icon-mode" value="draw" />
+                        Draw Image
+                    </label>
+                </div>
+
+                <!-- Upload Image Section -->
+                <div class="icon-upload" id="upload-mode">
+                    <img id="icon-preview" alt="Upload Icon" />
+                    <p>Upload an image to be your icon</p>
+                    <input type="file" id="upload-input" accept="image/*" />
+                </div>
+
+                <!-- Draw Image Section -->
+                <div class="icon-draw hidden" id="draw-mode">
+                    <canvas id="icon-canvas" width="150" height="150"></canvas>
+                    <p>Use your mouse to draw on the canvas</p>
+                    <button id="clear-canvas" class="clear-button">
+                        Clear Canvas
+                    </button>
+                </div>
+
+                <div class="form-group">
+                    <label for="icon-name" class="icon-label">Icon Name:</label>
+                    <input
+                        type="text"
+                        id="icon-name"
+                        placeholder="My Icon Name"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="icon-link" class="icon-label">Icon Link:</label>
+                    <input
+                        type="text"
+                        id="icon-link"
+                        placeholder="https://www.wikipedia.com"
+                    />
+                </div>
+
+                <button id="icon-action-button" class="button create-button">
+                    Create Icon
+                </button>
+            </div>
+        </main>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const params = new URLSearchParams(window.location.search);
+                const iconName = params.get("iconName");
+                const iconLink = params.get("iconLink");
+                const imageKey = params.get("imageKey");
+
+                const iconNameInput = document.getElementById(
+                    "icon-name",
+                ) as HTMLInputElement | null;
+                const iconLinkInput = document.getElementById(
+                    "icon-link",
+                ) as HTMLInputElement | null;
+                const iconPreview = document.getElementById(
+                    "icon-preview",
+                ) as HTMLImageElement | null;
+                const actionButton = document.getElementById(
+                    "icon-action-button",
+                ) as HTMLButtonElement | null;
+
+                const uploadMode = document.getElementById("upload-mode");
+                const drawMode = document.getElementById("draw-mode");
+                const modeInputs = document.querySelectorAll(
+                    "input[name='icon-mode']",
+                );
+
+                // Image upload
+                const uploadInput = document.getElementById(
+                    "upload-input",
+                ) as HTMLInputElement | null;
+
+                if (iconPreview && uploadInput) {
+                    iconPreview.addEventListener("click", () => {
+                        uploadInput.click();
+                    });
+
+                    uploadInput.addEventListener("change", (event) => {
+                        const file = (event.target as HTMLInputElement)
+                            ?.files?.[0];
+                        if (file) {
+                            const reader = new FileReader();
+                            reader.onload = (e) => {
+                                if (iconPreview) {
+                                    iconPreview.src = e.target
+                                        ?.result as string;
+                                }
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    });
+                }
+
+                // Canvas for drawing
+                const canvas = document.getElementById(
+                    "icon-canvas",
+                ) as HTMLCanvasElement | null;
+                const clearCanvasButton =
+                    document.getElementById("clear-canvas");
+                const ctx = canvas ? canvas.getContext("2d") : null;
+
+                if (canvas && ctx) {
+                    let drawing = false;
+
+                    canvas.addEventListener("mousedown", (e) => {
+                        drawing = true;
+                        const rect = canvas.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        ctx.beginPath();
+                        ctx.moveTo(x, y); 
+                    });
+
+                    canvas.addEventListener("mouseup", () => {
+                        drawing = false;
+                        ctx.closePath(); 
+                    });
+
+                    canvas.addEventListener("mouseleave", () => {
+                        drawing = false;
+                        ctx.closePath();
+                    });
+
+                    canvas.addEventListener("mousemove", (e) => {
+                        if (!drawing) return;
+                        const rect = canvas.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        ctx.lineWidth = 2;
+                        ctx.lineCap = "round";
+                        ctx.strokeStyle = "black";
+                        ctx.lineTo(x, y);
+                        ctx.stroke();
+                    });
+
+                    clearCanvasButton?.addEventListener("click", () => {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    });
+                }
+
+                modeInputs.forEach((input) => {
+                    input.addEventListener("change", (event) => {
+                        const selectedMode = (event.target as HTMLInputElement)
+                            .value;
+                        if (selectedMode === "upload") {
+                            uploadMode?.classList.remove("hidden");
+                            drawMode?.classList.add("hidden");
+                        } else if (selectedMode === "draw") {
+                            uploadMode?.classList.add("hidden");
+                            drawMode?.classList.remove("hidden");
+                        }
+                    });
+                });
+
+                if (iconName || iconLink || imageKey) {
+                    if (iconNameInput) {
+                        iconNameInput.value = iconName || "";
+                    }
+                    if (iconLinkInput) {
+                        iconLinkInput.value = iconLink || "";
+                    }
+                    if (iconPreview) {
+                        if (imageKey) {
+                            const storedImage = localStorage.getItem(imageKey);
+                            iconPreview.src =
+                                storedImage || "/backgrounds/custom_fake.png";
+                        }
+                    }
+                    if (actionButton) {
+                        actionButton.textContent = "Save Changes";
+                        actionButton.classList.remove("create-button");
+                        actionButton.classList.add("edit-button");
+                    }
+                } else {
+                    if (iconPreview) {
+                        iconPreview.src = "/backgrounds/custom_fake.png";
+                    }
+                    if (actionButton) {
+                        actionButton.textContent = "Create Icon";
+                        actionButton.classList.remove("edit-button");
+                        actionButton.classList.add("create-button");
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

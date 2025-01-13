@@ -1,0 +1,37 @@
+---
+layout: ../../layouts/ArticleLayout.astro
+title: "Weenix"
+description: "A compact Unix-like operating system complete with a file system and support for system calls, developed as part of a semester-long project."
+---
+
+## Overview
+
+In 2023, I developed **Weenix**, a fully functional, Unix-like operating system kernel, as part of a semester-long project for **CSCI1690: Operating Systems with Lab** at Brown University. This project involved designing and implementing core subsystems of an operating system, culminating in a kernel capable of managing processes, file systems, and virtual memory.
+
+## Key Components
+
+Weenix was built incrementally across several major subsystems, each focusing on a critical aspect of operating systems design:
+
+1. **Processes and Threads (Procs)**
+   - Implemented threading and process management, including context switching, scheduling, and synchronization primitives like mutexes.
+   - Developed the initial process lifecycle, enabling multiple processes and threads to run concurrently in kernel mode.
+
+2. **Device Drivers (Drivers)**
+   - Created device drivers for character devices (e.g., terminals) and block devices (e.g., disks).
+   - Supported memory devices like `/dev/null` and `/dev/zero` for efficient I/O operations.
+
+3. **Virtual File System (VFS)**
+   - Designed a UNIX-like file system interface to abstract file operations across different storage devices.
+   - Implemented pathname resolution and system calls for opening, reading, writing, and closing files.
+
+4. **System V File System (S5FS)**
+   - Developed an on-disk file system with support for inodes, directories, and data blocks.
+   - Implemented mechanisms for block allocation, directory traversal, and managing free lists.
+
+5. **Virtual Memory (VM)**
+   - Built a virtual memory manager to support user-space processes.
+   - Handled page faults, demand paging, and memory-mapped files (e.g., `mmap` and `munmap`).
+   - Implemented fork semantics with copy-on-write optimizations for efficient process duplication.
+
+Although I cannot share the code publicly, I am happy to discuss this project in detail with potential employers. Feel free to reach out if you are interested in seeing my implementation or hearing more about my approach.
+For a detailed breakdown of each subsystem, refer to the [Weenix Documentation](https://github.com/brown-cs1690/handout/wiki).

@@ -1,0 +1,191 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    color: #eaeaea;
+    background-color: #1e1e1e;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container for the Timeline */
+.timeline-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: linear-gradient(145deg, #121212, #1a1a1a);
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.timeline-header {
+    font-size: 2rem;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 30px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px;
+}
+
+/* Timeline Layout */
+.timeline {
+    position: relative;
+}
+
+.timeline-event {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    position: relative;
+    padding: 20px;
+    background: linear-gradient(145deg, #252525, #2e2e2e);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.timeline-event .event-header h3 {
+    font-size: 1.4rem;
+    color: #ffffff;
+}
+
+
+.timeline-event .event-header .event-location {
+    font-size: 0.9rem;
+    color: #bbbbbb;
+    text-align: right;
+}
+
+.timeline-event .event-content h4 {
+    font-size: 1rem;
+    color: #b0b0b0;
+    margin: 10px 0;
+}
+
+.timeline-event .event-content .event-duration {
+    font-style: italic;
+    color: #9a9a9a;
+    margin-bottom: 15px;
+}
+
+.timeline-event .event-content .event-description {
+    font-size: 0.95rem;
+    color: #dcdcdc;
+    margin-bottom: 10px;
+}
+
+.timeline-event:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+
+/* Event Header */
+.event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.event-header h3 {
+    font-size: 1.4rem;
+    color: #ffffff;
+    margin: 0;
+}
+
+.event-header .event-location {
+    font-size: 0.9rem;
+    color: #cccccc;
+    margin: 0;
+    text-align: right;
+}
+
+/* Content within each event */
+.event-content h4 {
+    font-size: 1rem;
+    color: #b0b0b0;
+    margin: 10px 0;
+}
+
+.event-content .event-duration {
+    font-style: italic;
+    color: #9a9a9a;
+    margin-bottom: 10px;
+}
+
+.event-content .event-description {
+    font-size: 0.95rem;
+    color: #dcdcdc;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.event-content ul {
+    padding-left: 20px;
+    margin: 0;
+    list-style-type: disc;
+}
+
+.event-content ul li {
+    font-size: 0.9rem;
+    color: #cccccc;
+    line-height: 1.5;
+    margin-bottom: 5px;
+}
+
+/* Connecting Line */
+.timeline-line {
+    height: 2px;
+    width: 80%;
+    margin: 15px auto;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .timeline-container {
+        padding: 15px;
+    }
+
+    .timeline-event {
+        padding: 15px;
+    }
+
+    .event-header h3 {
+        font-size: 1.2rem;
+    }
+
+    .event-content ul li {
+        font-size: 0.85rem;
+    }
+}
+
+/* Yearly Bullet List */
+.yearly-bullet-list {
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.yearly-bullet-list .year-section {
+    margin-bottom: 10px;
+}
+
+.yearly-bullet-list .year-section strong {
+    font-size: 1rem;
+    color: #ffffff;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.yearly-bullet-list .year-section ul {
+    padding-left: 20px;
+    list-style-type: disc;
+    margin-top: 5px;
+}
+
+.yearly-bullet-list .year-section ul li {
+    font-size: 0.9rem;
+    color: #cccccc;
+    margin-bottom: 5px;
+}

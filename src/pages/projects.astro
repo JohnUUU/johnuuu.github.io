@@ -1,0 +1,45 @@
+---
+import ProjectLayout from "../layouts/ProjectLayout.astro";
+
+const projects = [
+    {
+        thumbnail: "/icons/arena.png",
+        title: "Multiagent Arena",
+        link: "/articles/agtserver",
+        description:
+            "A dynamic platform for agents to duke it out across various strategic games",
+    },
+    {
+        thumbnail: "/icons/backtester.png",
+        title: "Backtester",
+        link: "/articles/backtester",
+        description:
+            "An exploration of the components and design behind QTAB's backtesting framework",
+    },
+    {
+        thumbnail: "/icons/chart.png",
+        title: "Open Source Chart Library (Pyret)",
+        link: "/articles/charts",
+        description:
+            "Enhancing Pyret's data visualization capabilities to empower educators and students",
+    },
+    {
+        thumbnail: "/icons/weenix.png",
+        title: "Weenix",
+        link: "/articles/weenix",
+        description:
+            "A compact Unix-like operating system complete with a file system and support for system calls, developed as part of a semester-long project.",
+    },
+];
+
+const title = "Projects";
+const intro =
+    "I've worked on a lot of things over the years but these are a few of my favorites! I hope you enjoy exploring them as much as I enjoyed building them.";
+---
+
+<ProjectLayout
+    projects={projects}
+    title={title}
+    intro={intro}
+    options={{ zoomed: true }}
+/>

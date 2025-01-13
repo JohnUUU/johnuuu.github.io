@@ -1,0 +1,120 @@
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 5px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.taskbar-tabs-container {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    position: relative;
+}
+
+
+.taskbar-tabs {
+    display: flex;
+    gap: 5px;
+    flex-grow: 1;
+    overflow: visible;
+    white-space: nowrap;
+    justify-content: flex-start;
+}
+
+.taskbar-tab {
+    font-family: 'Segoe UI Emoji';
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    max-width: 200px;
+    border-radius: 4px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: background 0.3s ease;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+.taskbar-tab:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.overflow-btn {
+    font-family: 'Inter', 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: background 0.3s ease;
+    align-items: center;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    margin-right: 10px;
+}
+
+.overflow-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5), 0 -3px 6px rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.overflow-btn:active {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 -1px 3px rgba(255, 255, 255, 0.1);
+    transform: translateY(2px);
+}
+
+
+.overflow-menu {
+    display: none;
+    position: absolute;
+    bottom: 40px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 5px 0;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-height: 190px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.overflow-menu .taskbar-tab {
+    display: block;
+    width: 100%;
+}
+
+.overflow-btn:hover+.overflow-menu {
+    display: block;
+}
+
+.taskbar-tabs-container.overflowing .overflow-btn {
+    display: inline-block;
+}
+
+.time-display {
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    margin-left: auto;
+    padding-right: 15px;
+}

@@ -1,0 +1,108 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/src/styles/global.css" />
+        <link rel="stylesheet" href="/src/styles/changebackground.css" />
+        <script src="/src/scripts/changeBackground.ts" type="module"></script>
+        <link rel="icon" href="/icons/glider.png" type="image/x-icon" />
+        <title>Change Desktop Background</title>
+    </head>
+    <body>
+        <header class="header">
+            <h1 class="page-title">Change Desktop Background</h1>
+        </header>
+        <main class="background-main">
+            <div class="background-options">
+                <script type="text/javascript">
+                    const backgrounds = [
+                        {
+                            src: "/backgrounds/windows_pixelated.png",
+                            title: "Windows Pixelated",
+                            credit: "By Porasjeet Singh (aka Okkoinu)",
+                            description:
+                                "A nostalgic pixelated version of the old classic default Windows background",
+                        },
+                        {
+                            src: "/backgrounds/windows.png",
+                            title: "Windows Classic",
+                            credit: "By Charles O'Rear",
+                            description:
+                                "You know it, you love it! The 'blissful' Windows background that we all grew up with",
+                        },
+                        {
+                            src: "/backgrounds/windows_11.png",
+                            title: "Windows Modern",
+                            credit: "By Studio Six N",
+                            description:
+                                "Very cool, very modern, if windows 11 still counts as modern",
+                        },
+                        {
+                            src: "/backgrounds/mac.png",
+                            title: "Yosemite",
+                            credit: "By Someone Apple Contracted (probably)",
+                            description:
+                                "Macs deserve some love too! Here's my favorite Mac background",
+                        },
+                        {
+                            src: "/backgrounds/space.png",
+                            title: "Bright Galaxy",
+                            credit: "By Tyler Young",
+                            description:
+                                "Space is cool! We like cool things, so here's a space background",
+                        },
+                        {
+                            src: "/backgrounds/crash.png",
+                            title: "Uh Oh...",
+                            credit: "By 1nch4nting",
+                            description:
+                                "Oops looks like you found a bug! Please have fun with our other features while we fix this crash.",
+                        },
+                        {
+                            src: "/backgrounds/cat.png",
+                            title: "Kanagawa Wave",
+                            credit: "By Katsushika Hokusai + FatCatArt (Remix)",
+                            description:
+                                "A classic piece of japanese art, just as we remember it... I think?",
+                        },
+                        {
+                            src: "/backgrounds/minimalism.png",
+                            title: "Minimalism",
+                            credit: "By Mark Kirkpatrick",
+                            description: "looks good",
+                        },
+                        {
+                            src: "/backgrounds/custom_fake.png",
+                            title: "Upload your own",
+                            credit: "By You",
+                            description:
+                                "Ha! You really thought you could upload your own image? Not today, my friend! This button's just a tease... for now",
+                        },
+                    ];
+
+                    const backgroundContainer = document.querySelector(
+                        ".background-options",
+                    );
+
+                    backgrounds.forEach((bg) => {
+                        const backgroundItem = `
+                        <div class="background-item">
+                            <div
+                                class="background-preview"
+                                data-bg="${bg.src}"
+                                style="background-image: url(${bg.src});"
+                            >
+                                <div class="background-hover-overlay">
+                                    <div class="background-description">${bg.description}</div>
+                                </div>
+                            </div>
+                            <div class="background-info">
+                                <h2 class="background-title">${bg.title}</h2>
+                                <p class="background-credit">${bg.credit}</p>
+                            </div>
+                        </div>`;
+                        backgroundContainer.innerHTML += backgroundItem;
+                    });
+                </script>
+            </div>
+        </main>
+    </body>
+</html>

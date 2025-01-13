@@ -1,0 +1,273 @@
+.draggable-window {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: 400px;
+    height: 300px;
+    border: 1px solid #ccc;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    resize: both;
+    z-index: 1000;
+    overflow: auto;
+}
+
+.resize-handle {
+    position: absolute;
+    background: transparent;
+    z-index: 10;
+}
+
+.resize-top {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    cursor: ns-resize;
+}
+
+.resize-right {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 5px;
+    cursor: ew-resize;
+}
+
+.resize-bottom {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 5px;
+    cursor: ns-resize;
+}
+
+.resize-left {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 5px;
+    cursor: ew-resize;
+}
+
+.resize-top-left {
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    cursor: nwse-resize;
+}
+
+.resize-top-right {
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    cursor: nesw-resize;
+}
+
+.resize-bottom-left {
+    bottom: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    cursor: nesw-resize;
+}
+
+.resize-bottom-right {
+    bottom: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    cursor: nwse-resize;
+}
+
+.window-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333;
+    color: white;
+    cursor: move;
+    z-index: 1001;
+}
+
+.window-header .window-controls {
+    display: flex;
+}
+
+.window-header .title {
+    flex-grow: 1;
+    overflow: hidden;
+    margin-left: 10px;
+    color: white;
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-right: 10px;
+}
+
+.window-header .window-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 5px 10px;
+}
+
+.window-header .window-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.window-header .close-btn:hover {
+    color: #ff4d4d;
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+.window-header .minimize-btn:hover {
+    color: #ffd700;
+    background-color: rgba(255, 223, 0, 0.2);
+}
+
+.window-header .expand-btn:hover {
+    color: #4caf50;
+    background-color: rgba(76, 175, 80, 0.2);
+}
+
+iframe {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    border: none;
+    overflow: scroll;
+}
+
+.window-nav {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ccc;
+    gap: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: visible;
+    opacity: 0;
+    max-height: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease, visibility 0.3s ease, padding 0.3s ease;
+    z-index: 11;
+}
+
+.trigger-area {
+    position: absolute !important;
+    height: 70px;
+    width: 100%;
+    background: transparent !important;
+    z-index: 10 !important;
+    pointer-events: auto;
+}
+
+.trigger-area:hover+.window-nav,
+.window-nav:hover {
+    visibility: visible;
+    opacity: 1;
+    max-height: 200px;
+    padding: 8px;
+    transform: translateY(0);
+}
+
+.nav-input,
+.nav-btn {
+    position: relative;
+    flex-shrink: 0;
+    max-height: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+.window-nav:hover .nav-input,
+.window-nav:hover .nav-btn,
+.trigger-area:hover+.window-nav .nav-input,
+.trigger-area:hover+.window-nav .nav-btn {
+    max-height: 40px;
+    opacity: 1;
+}
+
+
+.nav-input {
+    flex-grow: 1;
+    padding: 1px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #333;
+    background-color: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    pointer-events: auto;
+    z-index: 1001;
+}
+
+.nav-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.nav-btn {
+    position: relative;
+    background: none;
+    border: none;
+    font-size: 16px;
+    padding: 4px;
+    cursor: pointer;
+    color: #333;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    z-index: 1001;
+}
+
+.nav-btn:hover {
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+
+.nav-btn:active {
+    background-color: #e0e0e0;
+}
+
+.nav-btn::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 100%;
+    left: 400%;
+    transform: translate(-50%, 10px);
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 1002;
+    opacity: 1;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.nav-btn:hover::after {
+    opacity: 1;
+    display: block;
+    transform: translate(-50%, 0);
+}
+
+.nav-btn.disabled {
+    background: #e0e0e0;
+    color: #aaa;
+    cursor: not-allowed;
+    pointer-events: auto;
+}

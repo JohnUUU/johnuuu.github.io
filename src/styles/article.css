@@ -1,0 +1,253 @@
+html {
+    overflow: auto;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    overflow: auto;
+}
+
+
+/* Article Header Adjustments */
+.article-header {
+    background-color: #20232a;
+    color: white;
+    padding: 20px 20px;
+    /* Balanced vertical and horizontal padding */
+    margin: 0 auto;
+    /* Center the header */
+    text-align: left;
+}
+
+.article-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+}
+
+.article-description {
+    font-size: 1rem;
+    color: #aaa;
+    font-style: italic;
+    line-height: 1.5;
+    margin: 0;
+    /* Align with title */
+}
+
+/* Article Content Alignment */
+.article-content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-family: 'Playfair Display', serif;
+    counter-reset: section;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+        /* Adjust padding for smaller screens */
+    }
+}
+
+
+h1 {
+    margin-top: 0.5em;
+}
+
+.article-content h2::before {
+    content: counter(section) " ";
+    /* Use counter for numbering */
+    counter-increment: section;
+    /* Increment the counter */
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+
+.article-content h1,
+.article-content h2,
+.article-content h3 {
+    position: relative;
+    margin-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    /* Add spacing below the header text */
+    color: #333;
+    /* Adjust as per theme */
+}
+
+/* Line Above Header */
+.article-content h1::after,
+.article-content h2::after,
+.article-content h3::after {
+    content: '';
+    display: block;
+    width: 100%;
+    /* Full width or adjust as needed */
+    height: 3px;
+    /* Thickness of the line */
+    background-color: #ddd;
+    /* Line color */
+    margin: 10px auto;
+    /* Add spacing below */
+    position: absolute;
+    bottom: -10px;
+    /* Adjust position below the header */
+    left: 0;
+    /* Ensure the line spans the width of the header */
+}
+
+p {
+    margin: 1em 0;
+}
+
+ul {
+    padding-left: 1.5em;
+}
+
+/* Carousel Container */
+.carousel-container {
+    position: relative;
+    max-width: 800px;
+    margin: 40px auto;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+/* Carousel */
+.carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Carousel Items */
+.carousel-item {
+    display: none;
+    text-align: center;
+}
+
+/* Active Carousel Item */
+.carousel-item.active {
+    display: block;
+}
+
+/* Images */
+.carousel img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Captions */
+.carousel-caption {
+    margin-top: 0;
+    margin-bottom: 0;
+    /* Remove unnecessary margin at the top */
+    font-size: 1rem;
+    color: #555;
+    font-style: italic;
+    text-align: center;
+    padding: 5px 10px;
+    /* Adjust padding for consistent spacing */
+    background-color: #f9f9f9;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    /* Optional: slight shadow for better visual separation */
+    line-height: 1.4;
+    /* Ensure text is spaced well */
+}
+
+/* Carousel Controls */
+.carousel-control {
+    position: absolute;
+    top: 0;
+    /* Align with the top of the image */
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    border: none;
+    z-index: 1000;
+    opacity: 0.6;
+    transition: background 0.3s ease, opacity 0.3s ease;
+}
+
+/* Previous Button */
+.carousel-control-prev {
+    left: 0;
+}
+
+/* Next Button */
+.carousel-control-next {
+    right: 0;
+}
+
+/* Button Height Dynamically Matches Image */
+.carousel-control {
+    height: auto;
+    /* Dynamically adjust height */
+}
+
+/* Hover Effects */
+.carousel-control:hover {
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 1;
+}
+
+/* Button Icons */
+.carousel-control::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    mask-size: cover;
+    mask-repeat: no-repeat;
+}
+
+.carousel-control-prev::before {
+    mask-image: url('/icons/arrow-left.svg');
+}
+
+.carousel-control-next::before {
+    mask-image: url('/icons/arrow-right.svg');
+}
+
+/* Button Container */
+.button-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.btn-primary {
+    background: #28a745;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #218838;
+}

@@ -1,0 +1,1 @@
+declare const DOMPurify: typeof import('dompurify');

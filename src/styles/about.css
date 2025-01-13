@@ -1,0 +1,118 @@
+/* General Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #eaeaea;
+    background-color: #1e1e1e;
+}
+
+/* Header Section */
+.header {
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 3rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.header h2 {
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+/* Container for Side-by-Side Layout */
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 40px;
+}
+
+/* Content Section */
+.content {
+    flex: 2;
+    padding-right: 40px;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Profile Section */
+.profile {
+    align-self: flex-start;
+    /* Aligns the photo to the top of the container */
+    flex: 1;
+    text-align: center;
+    margin-top: 25px;
+    /* Removes extra spacing at the top */
+}
+
+
+.profile img {
+    border-radius: 10px;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+}
+
+/* Social Links */
+.social-links {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.social-links li {
+    margin-bottom: 10px;
+}
+
+.social-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: #333333;
+    /* Button-like appearance */
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+    background-color: #555555;
+    transform: scale(1.05);
+}
+
+/* Email Link */
+.email {
+    margin-top: 10px;
+    color: #ffffff;
+    font-size: 1.1rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: #333333;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.email:hover {
+    background-color: #555555;
+    transform: scale(1.05);
+}

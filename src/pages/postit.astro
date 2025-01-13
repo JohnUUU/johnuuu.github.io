@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sticky Note</title>
+        <link rel="icon" href="/icons/glider.png" type="image/x-icon" />
+        <link rel="stylesheet" href="/src/styles/postit.css" />
+    </head>
+    <body id="postit-body">
+        <header id="postit-header" contenteditable="true"></header>
+        <div id="postit-note" contenteditable="true"></div>
+
+        <script>
+            const urlSearchParams = new URLSearchParams(window.location.search);
+            const params = Object.fromEntries(urlSearchParams.entries());
+
+            const defaultHeader =
+                params.noteID === "0" ? "👋 Hi! I'm John Wu." : "Sticky Note";
+            const defaultBody =
+                params.noteID === "0"
+                    ? `<b>Welcome to my portfolio website!</b> 
+
+Here, almost everything is interactive, so please make sure to play around and explore.
+
+This space showcases my work, interests, and creative projects. If you scroll down, I'll guide you through some of the options, or you can dive right in and explore at your own pace!
+
+<b>Here are some fun things you can do:</b> 
+
+•  <b>Click on any of the desktop icons</b> to the right to learn more about me, my projects, or just explore the web.
+
+• <b>Customize the desktop</b> by right-clicking to change the background or even design new icons.
+
+•  <b>Check out the fun options in the start menu!</b> I recommend starting with some music to set the mood while you explore the site.
+
+• <b>Stack the Dolphin option</b> by clicking it repeatedly and see what happens!
+
+• Note: when <b> Incepting </b> the simulated universe may initialize crashed after too many nested simulations, just close it and resimulate to resolve it! 
+
+Thats all for spoilers, have fun exploring! 🎉
+`
+                    : "Type your note here...";
+
+            const postitHeader = document.getElementById("postit-header");
+            const postitNote = document.getElementById("postit-note");
+
+            if (postitHeader) {
+                postitHeader.textContent = defaultHeader;
+            }
+            if (postitNote) {
+                postitNote.innerHTML = defaultBody;
+            }
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,313 @@
+---
+const timelineData = [
+    {
+        title: "Bridgewater Associates",
+        position: "Investment Engineering Intern",
+        location: "Westport, CT",
+        duration: "Jun 2024 - Aug 2024",
+        description:
+            "Worked on the Portfolio Implementation Team to analyze and improve portfolio performance and economic trend analysis.",
+        bullets: [],
+    },
+    {
+        title: "Smartsheet",
+        position: "Software Engineering Intern",
+        location: "Bellavue, WA",
+        duration: "Jun 2023 - Aug 2023",
+        description:
+            "Improved database performance and streamlined workflows by optimizing queries, migrating large datasets securely, and implementing scalable cloud deployment solutions while enhancing testing and debugging processes.",
+        bullets: [
+            "Optimized the workflows surrounding commonly called slow SQL queries, reducing the response time of related workflows by 30%",
+            "Facilitated the seamless migration of a sizable database containing 300,000+ records to a highly secure endpoint.",
+            "Developed a comprehensive Locust script for data loading and environment setup, enabling efficient local testing and optimization of slow database queries.",
+        ],
+    },
+    {
+        title: "WEX Health Inc.",
+        position: "Data Analyst Intern",
+        location: "Portland, ME",
+        duration: "Jul 2022 - Aug 2022",
+        description:
+            "Worked on data integration, visualization, and analysis to improve business processes and support decision-making through actionable insights.",
+        bullets: [
+            "Created multiple reports in PowerBI to analyze trends and monitor key metrics, leading to the identification of key areas of improvement that resulted in a significant reduction of response time from 20 days",
+            "Developed and executed data-driven insights and recommendations to provide strategic direction to the company, resulting in improved business performance and decision-making",
+        ],
+    },
+    {
+        title: "Brown University (PLT)",
+        position: "Backend Developer (Volunteer Position)",
+        location: "Providence, RI",
+        duration: "Jun 2020 - Jan 2021",
+        description:
+            "Revamped Chart library to support 30 additional chart methods for Pyret, a functional scripting language designed for education.",
+        bullets: [
+            "Revamped the documentation extensively for the Chart API and designed it to be modular and beginner-friendly",
+            "Resolved prior integration issues with Google Charts, resulting in more accurate and stable charting functionality",
+        ],
+    },
+    {
+        title: "City of Chicago Math League",
+        position: "Math Competition Writer",
+        location: "Chicago, IL",
+        duration: "Sep 2020 - Aug 2021",
+        description:
+            "Designed and wrote 100 CCML geometry contest problems for each competing high school division (5 competitions)",
+        bullets: [],
+    },
+    {
+        title: "University of Chicago (YSP)",
+        position: "Math Camp Counselor",
+        location: "Chicago, IL",
+        duration: "Jul 2020 - Aug 2020",
+        description:
+            "Taught Number Theory and Programming for Math as part of UChicago's Young Scholar Program, creating detailed reference materials and introducing new teaching methods to enhance student learning.",
+        bullets: [
+            "Led daily in-person sessions to teach students Number Theory and Programming for Math, utilizing effective lesson plans to build understanding of complex problems",
+            "Created a comprehensive 52-page document of problems and solutions for students' reference after camp was over",
+        ],
+    },
+];
+
+const TATimelineData = [
+    {
+        title: "CS1440 - Algorithmic Game Theory",
+        position: "Head Teaching Assistant and Teaching Assistant",
+        location: "Providence, RI",
+        duration: "Spring 2023 - Spring 2025",
+        description:
+            "Explores game theory and mechanism design through a computational lens, focusing on incentive compatibility, strategic behavior, and agent design for auctions, prediction markets, and repeated games.",
+        yearlyBullets: {
+            "Spring 2025 (HTA)": ["Coming up soon..."],
+            "Spring 2024 (HTA)": [
+                "Designed and implemented a Python-based server infrastructure from scratch to facilitate real-time auction competitions, enabling students to craft and test competitive agent algorithms in a class-wide interactive environment.",
+                "Developed and hosted 4 lab sections covering supplementary course content during the semester to help students learn how to develop machine learning strategies for a variety of different auctions like 2 player matrix games, the AdX auction, and the spectrum auction.",
+                "Developed a Final Project allowing students to submit agents to compete in an auction mimicking the 'Spectrum Auction', integrating ELOMMR for large groups of students to allow students to dynamically upload and update their agents in response to a real-time leaderboard over the course of a few weeks.",
+                "Gave and recorded multiple optional 'recitation sessions' covering reinforcement learning and deep learning techniques to students",
+                "Interviewed, hired, trained, and coordinated staff of 3 undergraduate and graduate TAs.",
+            ],
+            "Spring 2023 (TA)": [
+                "Led Conceptual and Homework Hours instructing students in market design, auctions, and game theory.",
+                "Developed a Python-based Q Learning Lab, showcasing machine learning applications in game theory",
+                "Guided and mentored students in the creation of agents for the class-wide Spectrum Auction competition",
+            ],
+        },
+    },
+    {
+        title: "DATA1080 - Large Language Models and Generative AI",
+        position: "Head Teaching Assistant",
+        location: "Providence, RI",
+        duration: "Fall 2024",
+        description:
+            "A technical exploration of large language models (LLMs) and generative AI, focusing on recent developments in the field like RAG (Retrieval Augmented Generation), LangChain, and Multi Agent Systems (like OpenAI Swarm/Autogen)",
+        yearlyBullets: {
+            "Fall 2024 (HTA)": [
+                "Designed and gave a comprehensive lecture on Retrieval-Augmented Generation (RAG) and LangChain, including live demonstrations to help students engage with cutting-edge developments in the LLM space.",
+                "Guided students through their multi-agent final projects, providing mentorship in utilizing tools such as AutoGen and LangGraph to build sophisticated multi-agent pipelines.",
+                "Developed engaging and practical assignments to teach foundational concepts of both traditional neural network architectures and modern Transformer architectures.",
+                "Coordinated staff of 2 undergraduate and graduate TAs",
+            ],
+        },
+    },
+    {
+        title: "CS1460 - Computational Linguistics",
+        position: "Teaching Assistant",
+        location: "Providence, RI",
+        duration: "Fall 2023",
+        description:
+            "An introduction to Natural Language Processing (NLP), covering tasks such as machine translation, question answering, and text classification, alongside linguistic challenges like syntax and semantics. The course explores both traditional machine learning methods and modern deep learning approaches, with a focus on pretraining, finetuning, and the social responsibilities of NLP systems",
+        yearlyBullets: {
+            "Fall 2023 (TA)": [
+                "Led debugging hours guiding students toward a more robust understanding of language models",
+                "Enhanced a Topic Modeling assignment and implemented a robust Autograder test suite to provide timely feedback and guidance, improving the overall student assignment experience",
+                "Led the data preparation for a final project focused on preemptively identifying signs of depression in Reddit posts, successfully replicating the findings of a key research paper, and preparing a toy project for students to work with.",
+            ],
+        },
+    },
+];
+
+const EducationTimelineData = [
+    {
+        title: "Brown University",
+        position:
+            "Sc.M. in Computer Science, Sc.B. in Computer Science and Business Economics",
+        location: "Providence, RI",
+        duration: "September 2020 - Currently Attending",
+        description: "",
+        yearlyBullets: {
+            "Graduate Level Coursework": [
+                "Advanced Algorithmic Game Theory",
+                "Robust Algorithms in Machine Learning",
+                "Learning and Sequential Decision Making (RL)",
+                "Database Management Systems",
+                "Programming Languages",
+            ],
+            "Undergraduate Level Coursework": [
+                "Operating Systems + Lab",
+                "Computational Linguistics",
+                "Deep Learning",
+                "Mathematical Econometrics",
+                "Computer Vision",
+                "Intro to Computer Systems",
+                "Logic for Systems",
+                "Information Theory",
+                "Pattern Theory",
+                "Theory of Computation",
+                "Multiprocesor Synchronization",
+                "Bargaining Theory + Applications",
+                "Honors Linear Algebra",
+                "Statistical Inference",
+                "Data Science",
+                "Intro to Software Engineering",
+                "Introduction to Game Theory",
+                "Artificial Intelligence",
+                "Intermediate Microeconomics",
+                "Financial Accounting",
+                "Intermediate Calculus",
+                "The Art of Writing Mathematics",
+                "Intermediate Macroeconomics",
+                "Investments I",
+                "Corporate Finance",
+                "Industrial Organization",
+            ],
+        },
+    },
+    {
+        title: "Whitney Young Magnet High School",
+        position: "National Merit Scholar",
+        location: "Chicago, IL",
+        duration: "September 2016 - May 2020",
+        description: "",
+        yearlyBullets: {},
+    },
+];
+---
+
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="/src/styles/global.css" />
+        <link rel="stylesheet" href="/src/styles/timeline.css" />
+    </head>
+    <body>
+        <div class="timeline-container">
+            <h1 class="timeline-header">Experience</h1>
+            <div class="timeline">
+                {
+                    timelineData.map((item, index) => (
+                        <div class="timeline-event">
+                            <div class="event-header">
+                                <h3>{item.title}</h3>
+                                <span class="event-location">
+                                    {item.location}
+                                </span>
+                            </div>
+                            <div class="event-content">
+                                <h4>{item.position}</h4>
+                                <p class="event-duration">{item.duration}</p>
+                                <p class="event-description">
+                                    {item.description}
+                                </p>
+                                <ul>
+                                    {item.bullets.map((bullet) => (
+                                        <li>{bullet}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                            {index < timelineData.length && (
+                                <div class="timeline-line" />
+                            )}
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+
+        <div class="timeline-container">
+            <h1 class="timeline-header">Teaching</h1>
+            <div class="timeline">
+                {
+                    TATimelineData.map((item, index) => (
+                        <div class="timeline-event">
+                            <div class="event-header">
+                                <h3>{item.title}</h3>
+                                <span class="event-location">
+                                    {item.location}
+                                </span>
+                            </div>
+                            <div class="event-content">
+                                <h4>{item.position}</h4>
+                                <p class="event-duration">{item.duration}</p>
+                                <p class="event-description">
+                                    {item.description}
+                                </p>
+                                <ul class="yearly-bullet-list">
+                                    {Object.entries(item.yearlyBullets).map(
+                                        ([year, bullets]) => (
+                                            <li class="year-section">
+                                                <strong>{year}</strong>
+                                                <ul>
+                                                    {bullets.map(
+                                                        (bullet: string) => (
+                                                            <li>{bullet}</li>
+                                                        ),
+                                                    )}
+                                                </ul>
+                                            </li>
+                                        ),
+                                    )}
+                                </ul>
+                            </div>
+                            {index < TATimelineData.length && (
+                                <div class="timeline-line" />
+                            )}
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+
+        <div class="timeline-container">
+            <h1 class="timeline-header">Education</h1>
+            <div class="timeline">
+                {
+                    EducationTimelineData.map((item, index) => (
+                        <div class="timeline-event">
+                            <div class="event-header">
+                                <h3>{item.title}</h3>
+                                <span class="event-location">
+                                    {item.location}
+                                </span>
+                            </div>
+                            <div class="event-content">
+                                <h4>{item.position}</h4>
+                                <p class="event-duration">{item.duration}</p>
+                                <p class="event-description">
+                                    {item.description}
+                                </p>
+                                <ul class="yearly-bullet-list">
+                                    {Object.entries(item.yearlyBullets).map(
+                                        ([year, bullets]) => (
+                                            <li class="year-section">
+                                                <strong>{year}</strong>
+                                                <ul>
+                                                    {bullets.map(
+                                                        (bullet: string) => (
+                                                            <li>{bullet}</li>
+                                                        ),
+                                                    )}
+                                                </ul>
+                                            </li>
+                                        ),
+                                    )}
+                                </ul>
+                            </div>
+                            {index < EducationTimelineData.length && (
+                                <div class="timeline-line" />
+                            )}
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </body>
+</html>; ---

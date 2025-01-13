@@ -1,0 +1,94 @@
+---
+layout: ../../layouts/ArticleLayout.astro
+title: "Anatomy of a Backtester"
+description: "An exploration of the components and design behind QTAB's backtesting framework"
+---
+
+## Introduction
+
+Backtesting is a super critical tool in quantitative trading. It’s how we test strategies before putting them into the real world, simulating trades on historical data to see how they perform. At QTAB (Quant Trading @ Brown), I had the opportunity to lead the development of a file-based backtester.
+
+In this article, I’ll walk you through the components of our backtester and explain how they all work together!
+
+## Structure
+
+Our backtester is built on a file-based architecture. This approach makes data handling transparent and debugging straightforward. Each piece of the system—data ingestion, model interaction, and portfolio management is modular, making it easy to tweak and extend as we iterate.
+
+
+### Data Side
+
+Every good model always starts with high-quality data and data engineering, so we started with the data pipeline: 
+
+- **Data Scrapers**  
+  To build effective strategies, you need access to comprehensive data. Our scrapers gather cost-effective data from online sources, ensuring we have a rich dataset covering prices, volumes, and other essential metrics.
+
+- **Signals**  
+  Signals are the actionable inputs to our models. They’re derived from raw data and built to be dynamically transformed, filtered, and joined on the fly to suit specific strategies. This flexibility allows users to create unique signals tailored to their models. 
+
+- **Universe**  
+  The universe refers to the assets available for trading, along with their metadata (price, volume, OHLCV, etc.).
+
+### Model Side
+
+The model is where the magic happens. It’s what turns data into decisions. Here’s how we approached it:
+
+- **Models**  
+  Models consume signals and asset information to generate trading orders dynamically. They can also contiain a logger that they can use to log anything into a file for further analysis. Right now, our models work directly with signals and the universe, but future iterations will incorporate portfolio data to enable even more sophisticated strategies.
+
+### Portfolio Side
+
+The portfolio is the heartbeat of the backtester, tracking performance and simulating trades. Here’s how we’ve set it up:
+
+- **Portfolio Tracking**  
+  We log the portfolio’s state over time, including holdings, cash, and key metrics. This creates a complete record for post-simulation analysis.
+
+- **Trade Executor**  
+  Executing trades in a simulation needs to feel realistic. Our executor simulates taking orders and executing the orders to the best of our ability (given different restrictions). 
+
+- **Cost Model**  
+  Unfortunately trading is not free so we have to account for costs. We’ve implemented a rudimentary cost model to simulate transaction expenses, including spreads and flat fees to get a better sense of actual portfolio performance.
+
+### The Backtester Workflow
+
+Here’s how all the pieces come together to create the backtester workflow:
+
+1. **Data Preparation:**  
+   Preprocess and transform raw data into signals and a tradable universe.
+
+2. **Order Generation:**  
+   Prompt the model to generate orders based on the current data and universe.
+
+3. **Scheduling:**  
+   Use a fixed scheduler to determine whether to log summary metrics, execute trades, or update the portfolio.
+
+4. **Simulation:**  
+   Run the backtest over a defined date range with specified conditions. Reinitialize as needed to prevent foreknowledge leakage.
+
+5. **Logging and Visualization:**  
+   Save all data from the model, portfolio, and metrics. Users can analyze this data with a basic visualizer we’ve built to track performance.
+
+A key priority throughout all of this is preventing foreknowledge leakage, especially because of how pernicious it can be (sneaking through time-zones, suriviorship bias, etc...) but we can't prevent everything systematically so the data transformations still need to be done responsibly, and the work still needs to be scrutinized deeply. 
+
+## Results and Reflections
+
+Building this backtester has been an incredible learning experience. It’s not perfect, but it’s a good starting point. 
+
+That said, there’s still plenty of room to improve it further:
+
+- **Expanding Models:**  
+  Integrating portfolio data into models to enable more complex models. 
+
+- **Dynamic Scheduling:**  
+  Moving from fixed schedules to ones that adapt based on strategy requirements.
+
+- **Better Cost Models:**  
+  Simulating more nuanced costs, including slippage and market impact.
+
+- **Enhanced Visualizations:**  
+  Adding more robust tools to visualize trades, portfolio performance, and strategy metrics.
+
+We’re also exploring external tools like `vectorbt` to see if they can complement or even replace parts of our workflow. The goal is to focus more on research while keeping our systems flexible and easy to adapt.
+
+Note: The code for this project is private to the club, but if you're a potential employer or just interested to talk about it please reach out and I can go into more detail about it!
+
+---
