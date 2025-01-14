@@ -3,7 +3,7 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background: url('/backgrounds/windows_pixelated.png') no-repeat center center/cover;
+    background: url('/backgrounds/windows.png') no-repeat center center/cover;
 }
 
 .desktop-icon {
