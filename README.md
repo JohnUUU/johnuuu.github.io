@@ -12,13 +12,13 @@ If you'd like to build and run this project locally, follow these steps:
 1. **Clone the repository**:
 
    ```sh
-   git clone https://github.com/JohnWu/portfolio-website.git
+   git clone https://github.com/JohnWu/johnuuu.github.io.git
    ```
 
 2. **Navigate to the project directory**:
 
    ```sh
-   cd portfolio-website
+   cd johnuuu.github.io
    ```
 
 3. **Install dependencies**:
