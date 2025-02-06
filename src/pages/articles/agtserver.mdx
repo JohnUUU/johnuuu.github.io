@@ -22,7 +22,7 @@ To tackle this issue, it was clear that a complete overhaul was needed: not just
 
 - **Robustness and Fair Play:** The platform must be resilient to edge cases, ensuring that unexpected inputs or bugs are addressed proactively. It should maintain fairness by preventing agents from exploiting the system or operating outside the intended scope of the game.
 
-- **Extensive Testing and Scalability**: The system should undergo rigourous stress testing with as many agents as we could think up to ensure it could handle the scale and complexity of the labs. At the same time, it needed guardrails to prevent intentional or unintentional abuses systematically.
+- **Extensive Testing and Scalability**: The system should feel good to use, thus I made sure to rigorously stress test the server with as many agents and edge cases as I could think up to ensure it could handle the scale and complexity of the labs. At the same time, I multi-processed the arena across multiple cores to ensure that the labs and projects run as fast as possible. 
 
 ## Implementation
 
@@ -94,11 +94,11 @@ Here's what it looked like in practice:
 
 ## Results and Reflection (2024)
 
-Reflecting on the project, there were plenty of things I was proud of as well as my fair share of lessons learned. On the positive side, I was thrilled to see students genuinely engaging with the arena and coming up with far more creative strategies than in previous years. For the first time, some students actively analyzed and predicted the meta, crafting counter-strategies, which was a dynamic I’d always hoped to foster. The live feedback loop during development was also a highlight: it allowed me to adjust the experience based on student suggestions and address pain points as they surfaced.
+Reflecting on the project, there were plenty of things I was proud of as well as my fair share of lessons learned. On the positive side, I was thrilled to see students genuinely engaging with the arena and coming up with far more creative strategies than in previous years.  For the first time, some students actively analyzed and predicted the meta, crafting counter-strategies, which was a dynamic I’d always hoped to foster. The live feedback loop during development was also a highlight: it allowed me to adjust the experience based on student suggestions and address pain points as they surfaced. I was also very thrilled with the optimizations that I had dramatically speeding up the game allowing us to make the games more complex and breed more interesting strategies. 
 
 Unfortuantely, there were also things that didn't go as planned as well.  The fast-paced nature of developing the labs and server infrastructure meant that some unexpected bugs needed to be hotfixed on the fly, which occasionally created the frustrating experiences I had aimed to avoid. The ELOMMR algorithm used also unfortunately had too much variance  and "drift" in larger multiplayer games and switching to average score rapidly changed what the bots needed to optimize for causing confusion. Logging errors back to students also proved challenging, and it often required manual intervention or private posts on EdStem. The live hotfixing also sometimes tacitly encouraged some students to try and creatively break the server (e.g. by naming themselves a bunch of new lines) which was helpful to identify edge cases but was also disruptive and could have been better handled.
 
-It wasn't perfect but given the tight time-constraints I'm decently happy with where this ended up. More importantly, I learned a lot and am excited refine it further for 2025!
+It wasn't perfect but given the tight time constraints I'm decently happy with where this ended up. More importantly, I learned a lot and am excited refine it further for 2025!
 
 ## Coming Soon (2025)
 
@@ -108,8 +108,9 @@ Here are a few other things that will be worked on in no particular order:
 
 - Restructuring the rest of the current labs and final project to work with the new docker based workflow
 - Building python labs for intermediate auctions to help people ramp up the the final projects: Spectrum auction and Ad Exchange auction.
-- Maybe implementing live github branch based logging to help students get immediate feedback beyond simple gradescope submission tests.
+- Live github branch based logging to help students get immediate feedback beyond simple gradescope submission tests.
 - Improving the data available to students to facilitate better machine learning agents.
+- Aggregating compute across multiple computers using MapReduce with partial results to speed up the number of games even further
 - [Stretch Goal] Add visualizers to each of the games alongside logging to help better visualize what is happening.
 
 <div class="button-container">
